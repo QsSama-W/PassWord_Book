@@ -12,7 +12,7 @@
 <body>
     <h2>密码本</h2>
     <!-- 登出按钮 -->
-    <form action="logout.php" method="post">
+    <form action="logout2.php" method="post">
         <input type="submit" value="登出">
     </form>
     <button class="new-note-button" onclick="window.location.href='new_note.php'">新建</button>
