@@ -4,22 +4,10 @@
 **1、配置数据库参数：** 
 在 `db_connection.php` 文件中精准填入你的数据库相关参数，确保数据库连接的准确性。
 ```
-// 示例代码结构，实际参数需根据你的数据库配置填写
-<?php
-// 数据库配置信息
 $servername = "localhost";  // 数据库主机名
 $username = "your_username";  // 数据库用户名
 $password = "your_password";  // 数据库密码
 $dbname = "your_database_name";    // 数据库名
-
-// 创建数据库连接
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// 检查连接是否成功
-if ($conn->connect_error) {
-    die("连接失败: " . $conn->connect_error);
-}
-?>
 ```
 **2、初始化数据库 - 设置登录密码：**
 打开 `/hash.php` 文件，将文件内容替换为你设定的登录密码。运行该文件，获取加密后的密码，然后将其填入 SQL 中，完成数据库的初始化操作。
