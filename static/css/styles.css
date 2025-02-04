@@ -9,16 +9,14 @@ body {
     align-items: center;
     min-height: 100vh;
 }
-
-/* 主标题样式 */
+/* 页面标题样式 */
 h2 {
     text-align: center;
     color: #333;
     margin-top: 30px;
     font-size: 24px;
 }
-
-/* 登出表单按钮样式 */
+/* 登出按钮样式 */
 body form:first-of-type input[type="submit"] {
     position: absolute;
     top: 20px;
@@ -31,11 +29,9 @@ body form:first-of-type input[type="submit"] {
     cursor: pointer;
     font-size: 16px;
 }
-
 body form:first-of-type input[type="submit"]:hover {
     background-color: #c82333;
 }
-
 /* 新建按钮样式 */
 .new-note-button {
     position: absolute;
@@ -50,13 +46,10 @@ body form:first-of-type input[type="submit"]:hover {
     font-size: 16px;
     width: 72px;
 }
-
-/* 新建按钮悬停效果 */
 .new-note-button:hover {
     background-color: #0056b3;
 }
-
-/* 搜索框样式 */
+/* 搜索输入框样式 */
 #searchInput {
     padding: 8px 12px;
     border: 1px solid #ccc;
@@ -64,8 +57,8 @@ body form:first-of-type input[type="submit"]:hover {
     font-size: 14px;
     margin-right: 10px;
     width: 200px;
+    margin-bottom: 15px;
 }
-
 /* 搜索按钮样式 */
 #searchButton {
     padding: 8px 12px;
@@ -75,14 +68,12 @@ body form:first-of-type input[type="submit"]:hover {
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
+    margin-right: 10px; 
 }
-
-/* 搜索按钮悬停效果 */
 #searchButton:hover {
     background-color: #218838;
 }
-
-/* 重置搜索按钮样式 */
+/* 重置按钮样式 */
 #resetButton {
     padding: 8px 12px;
     background-color: #28a745;
@@ -92,12 +83,9 @@ body form:first-of-type input[type="submit"]:hover {
     cursor: pointer;
     font-size: 14px;
 }
-
-/* 重置搜索按钮悬停效果 */
 #resetButton:hover {
     background-color: #218838;
 }
-
 /* 笔记列表容器样式 */
 .notes-wrapper {
     background-color: #ffffff;
@@ -110,27 +98,23 @@ body form:first-of-type input[type="submit"]:hover {
     margin-bottom: 30px;
     box-sizing: border-box;
 }
-
 /* 单个笔记样式 */
 .note {
     border-bottom: 1px solid #eee;
     padding: 15px 0;
 }
-
 /* 笔记标题样式 */
 .note h3 {
     margin: 0 0 10px 0;
     color: #333;
     font-size: 18px;
 }
-
 /* 笔记内容段落样式 */
 .note p {
     margin: 5px 0;
     color: #666;
     font-size: 14px;
 }
-
 /* 笔记操作链接样式 */
 .note a {
     color: #007BFF;
@@ -138,46 +122,127 @@ body form:first-of-type input[type="submit"]:hover {
     margin-right: 10px;
     font-size: 14px;
 }
-
-/* 笔记操作链接悬停效果 */
 .note a:hover {
     text-decoration: underline;
 }
-
-/* 搜索框和按钮容器样式 */
+/* 搜索容器样式 */
 .search-container {
     display: inline-block;
 }
-
-/* 搜索框样式 */
-#searchInput {
+/* 搜索类型下拉框样式 */
+#searchType {
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
     margin-right: 10px;
-    width: 200px;
-}
-
-/* 搜索按钮样式 */
-#searchButton {
-    padding: 8px 12px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
     cursor: pointer;
-    font-size: 14px;
-    margin-right: 10px; /* 添加右侧间距 */
+    appearance: none; 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path d="M6 9.2l-3.2-3.2 1-1L6 7.2l2.2-2.2 1 1z" fill="%23333"/></svg>'); 
+    background-repeat: no-repeat;
+    background-position: right 10px center;
 }
+#searchType:hover {
+    border-color: #999;
+}
+#searchType:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+}
+#searchType {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: none; 
+}
+/* 手机屏幕样式调整 */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+        align-items: center;
+    }
 
-/* 重置搜索按钮样式 */
-#resetButton {
-    padding: 8px 12px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
+    /* 顶部按钮布局优化 */
+    .top-buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .new-note-button,
+    body form:first-of-type input[type="submit"] {
+        width: auto;
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    /* 搜索区域 */
+    .search-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    /* 让搜索框和输入框在同一水平线上 */
+    .search-group {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        gap: 8px;
+        min-width: 200px;
+    }
+
+    /* 让下拉框和输入框等高 */
+    #searchInput {
+        height: 20px;
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+    /* 让下拉框和输入框等高 */
+    #searchType {
+        height: 38px;
+        padding: 1px 1px;
+        font-size: 16px;
+        text-align: center; /* 让文本水平居中 */
+        display: flex;
+        align-items: center; /* 让文本垂直居中 */
+        justify-content: center;
+        width: 20px;
+    }
+
+    
+    #searchType {
+        flex: 1;
+        max-width: 120px;
+    }
+
+    #searchInput {
+        flex: 2;
+        min-width: 150px;
+    }
+
+    /* 搜索和重置按钮等高 */
+    #searchButton,
+    #resetButton {
+        height: 40px;
+        padding: 8px 12px;
+        font-size: 16px;
+        min-width: 80px;
+    }
+
+    /* 保证笔记列表不会超出 */
+    .notes-wrapper {
+        width: 100%;
+        max-width: 500px;
+    }
 }
