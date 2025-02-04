@@ -29,5 +29,5 @@
         </form>
     </div>
 </body>
-
+<script src="./static/js/notepad.js"></script>
 </html>
