@@ -1,0 +1,108 @@
+/* 全局样式 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url('./img/bj.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* 容器样式 */
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 320px;
+}
+
+/* 标题样式 */
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* 表单标签样式 */
+form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 表单输入框样式 */
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
+/* 提交按钮样式 */
+form input[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* 页脚样式 */
+.footer {
+    text-align: center; /* 文字居中 */
+    position: fixed; /* 固定在页面底部 */
+    bottom: 0px; /* 底部对齐 */
+    width: 100%; /* 宽度100% */
+    font-size: 14px; /* 字体大小 */
+}
+
+/* 页脚链接样式 */
+.footer-link {
+    display: inline-block; /* 行内块元素 */
+    margin: 0 0px; /* 外边距 */
+    color: white; /* 颜色 */
+    text-decoration: none; /* 去掉下划线 */
+}
+
+/* 页脚链接图标样式 */
+.footer-link img {
+    width: 15px;
+}
+
+/* 页脚分隔符样式 */
+.footer-separator {
+    display: inline-block; /* 行内块元素 */
+    margin: 0 0px; /* 外边距 */
+    color: white; /* 颜色 */
+}

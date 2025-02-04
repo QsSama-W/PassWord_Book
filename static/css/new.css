@@ -1,0 +1,76 @@
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* 页面标题样式 */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+/* 返回主页按钮样式 */
+form input[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: absolute; /* 绝对定位 */
+    top: 30px;
+    right: 20px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* 表单包装器样式 */
+.form-wrapper {
+    max-width: 600px;
+    margin: 50px auto; /* 调整表单的上边距，避免与返回按钮重叠 */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 表单标签样式 */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* 输入框和文本域样式 */
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+/* 保存按钮样式 */
+.save-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #0056b3;
+}
