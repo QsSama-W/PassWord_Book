@@ -17,11 +17,21 @@
     <button class="new-note-button" onclick="window.location.href='new_note.php'">新建</button>
 
     <!-- 搜索框，搜索按钮，重置搜索按钮 -->
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="搜索标题">
-        <button id="searchButton">搜索</button>
-        <button id="resetButton">重置搜索</button>
-    </div>
+    <form id="searchForm" action="" method="get">
+        <div class="search-container">
+            <select id="searchType" name="searchType">
+                <option value="title">标题</option>
+                <option value="content">网址</option>
+                <option value="content2">账号</option>
+                <option value="content3">密码</option>
+            </select>
+            <input type="text" id="searchInput" name="search" placeholder="请输入搜索内容">
+        </div>
+        <div class="search-container">
+            <button type="submit" id="searchButton">搜索</button>
+            <button type="button" id="resetButton" onclick="resetSearch()">重置搜索</button>
+        </div>
+    </form>
 
     <div class="notes-wrapper">
         <?php
@@ -34,10 +44,11 @@
         require_once 'db_connection.php';
 
         $search = isset($_GET['search']) ? $_GET['search'] : '';
+        $searchType = isset($_GET['searchType']) ? $_GET['searchType'] : 'title';
         $whereClause = '';
         if ($search) {
             $search = $conn->real_escape_string($search);
-            $whereClause = " WHERE title LIKE '%$search%'";
+            $whereClause = " WHERE $searchType LIKE '%$search%'";
         }
 
         // 修改 SQL 查询语句以实现按标题首字符排序
@@ -70,7 +81,6 @@
                 echo "<p>账号：" . $row["content2"] . "</p>";
                 echo "<p>密码：" . $row["content3"] . "</p>";
                 echo "<a href='edit_note.php?id=" . $row["id"] . "'>修改</a>";
-                // 添加 onclick 事件处理程序
                 echo "<a href='delete_note.php?id=" . $row["id"] . "' onclick=\"return confirm('确定要删除这条记录吗？');\">删除</a>";
                 echo '</div>';
             }
@@ -81,5 +91,14 @@
         $conn->close();
         ?>
     </div>
+    <script>
+        function resetSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchType').value = 'title';
+            document.getElementById('searchForm').submit();
+        }
+    </script>
     <script src="./static/js/notepad.js"></script>
+</body>
+
 </html>
