@@ -24,10 +24,12 @@ resetTimer();
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 const resetButton = document.getElementById('resetButton');
+const searchTypeSelect = document.getElementById('searchType'); // 获取下拉框元素
 
 // 保留搜索框中的文本
 searchButton.addEventListener('click', function () {
     const searchValue = searchInput.value;
+    const searchTypeValue = searchTypeSelect.value; // 获取下拉框选中的值
     const currentUrl = new URL(window.location.href);
 
     if (searchValue) {
@@ -35,6 +37,9 @@ searchButton.addEventListener('click', function () {
     } else {
         currentUrl.searchParams.delete('search');
     }
+
+    // 设置搜索类型参数
+    currentUrl.searchParams.set('searchType', searchTypeValue);
 
     // 页面跳转后恢复搜索框内容
     window.history.replaceState({}, '', currentUrl.toString());
@@ -45,17 +50,24 @@ searchButton.addEventListener('click', function () {
 // 重置搜索按钮点击事件
 resetButton.addEventListener('click', function () {
     searchInput.value = ''; // 清空搜索框内容
+    searchTypeSelect.value = 'title'; // 重置下拉框为默认值
     const currentUrl = new URL(window.location.href);
     currentUrl.searchParams.delete('search'); // 删除 URL 中的搜索参数
+    currentUrl.searchParams.set('searchType', 'title'); // 设置搜索类型为默认值
     window.location.href = currentUrl.toString(); // 跳转页面
 });
 
-// 页面加载时恢复搜索框内容
+// 页面加载时恢复搜索框内容和下拉框选中状态
 window.addEventListener('load', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const searchValue = urlParams.get('search');
+    const searchTypeValue = urlParams.get('searchType');
 
     if (searchValue) {
         searchInput.value = searchValue;
+    }
+
+    if (searchTypeValue) {
+        searchTypeSelect.value = searchTypeValue; // 恢复下拉框选中状态
     }
 });
