@@ -18,56 +18,84 @@ h2 {
     font-size: 24px;
 }
 
-/* 表单容器样式 */
-.form-wrapper {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 600px;
-    max-width: 90%;
-    margin-top: 20px;
-    box-sizing: border-box;
-}
-
-/* 表单标签样式 */
-.form-wrapper label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-/* 表单输入框和文本域样式 */
-.form-wrapper input[type="text"],
-.form-wrapper textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-
-/* 表单提交按钮和新建按钮样式 */
-.form-wrapper input[type="submit"],
-.form-wrapper button {
+/* 登出表单按钮样式 */
+body form:first-of-type input[type="submit"] {
+    position: absolute;
+    top: 20px;
+    left: 20px;
     padding: 10px 20px;
-    background-color: #007BFF;
+    background-color: #dc3545;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin-right: 10px;
 }
 
-/* 按钮悬停效果 */
-.form-wrapper input[type="submit"]:hover,
-.form-wrapper button:hover {
+body form:first-of-type input[type="submit"]:hover {
+    background-color: #c82333;
+}
+
+/* 新建按钮样式 */
+.new-note-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 72px;
+}
+
+/* 新建按钮悬停效果 */
+.new-note-button:hover {
     background-color: #0056b3;
+}
+
+/* 搜索框样式 */
+#searchInput {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+/* 搜索按钮样式 */
+#searchButton {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* 搜索按钮悬停效果 */
+#searchButton:hover {
+    background-color: #218838;
+}
+
+/* 重置搜索按钮样式 */
+#resetButton {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* 重置搜索按钮悬停效果 */
+#resetButton:hover {
+    background-color: #218838;
 }
 
 /* 笔记列表容器样式 */
@@ -111,61 +139,45 @@ h2 {
     font-size: 14px;
 }
 
-/* 链接悬停效果 */
+/* 笔记操作链接悬停效果 */
 .note a:hover {
     text-decoration: underline;
 }
 
-/* 按钮样式 */
-.new-note-button {
-    top: 20px;
-    right: 20px;
-    background-color: #007BFF;
+/* 搜索框和按钮容器样式 */
+.search-container {
+    display: inline-block;
+}
+
+/* 搜索框样式 */
+#searchInput {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+/* 搜索按钮样式 */
+#searchButton {
+    padding: 8px 12px;
+    background-color: #28a745;
     color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-/* 鼠标悬停时的样式 */
-.new-note-button:hover {
-    background-color: #0056b3;
-}
-
-/* 保存表单样式 */
-body form:first-of-type input[type="save"] {
-    top: 20px;
-    right: 20px;
-    width: 35px;
-    padding: 10px 20px;
-    background-color: #dc3545;
-    color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
+    margin-right: 10px; /* 添加右侧间距 */
 }
 
-body form:first-of-type input[type="save"]:hover {
-    background-color: #c82333;
-}
-
-/* 登出表单样式 */
-body form:first-of-type input[type="submit"] {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    background-color: #dc3545;
-    color: #fff;
+/* 重置搜索按钮样式 */
+#resetButton {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
-}
-
-body form:first-of-type input[type="submit"]:hover {
-    background-color: #c82333;
+    font-size: 14px;
 }
