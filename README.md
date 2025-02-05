@@ -45,8 +45,8 @@ VALUES ('admin', '$2y$10$PQaM8NtAyPCpY.Oc/dBVlusZl6.lb2fjQec9pRCHOyhOM2cbLArOe',
 ![1.png](https://github.com/QsSama-W/PassWord_Book/blob/main/1.png)
 
 
-**5、新增用户页面**
-打开`./register.php`文件，进行注册新用户，默认权限为`user`，第一个用户为`admin`权限
+**5、新增用户页面：**
+用管理员权限账号登录后，打开`./register.php`，进行注册新用户 (默认用户权限为`user`)
 
 
 > [!WARNING]
