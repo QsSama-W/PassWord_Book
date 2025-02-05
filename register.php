@@ -8,7 +8,7 @@ if (!isset($_SESSION['csrf_token'])) {
 
 // 检查用户是否已登录
 if (isset($_SESSION["user_id"])) {
-    require_once '#db_connection.php';
+    require_once 'db_connection.php';
     
     $stmt_config = $conn->prepare("SELECT value FROM config WHERE key_name = 'allowed_roles'");
     $stmt_config->execute();
