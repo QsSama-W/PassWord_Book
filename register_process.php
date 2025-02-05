@@ -26,7 +26,7 @@ if (isset($_SESSION["user_id"])) {
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // 用户名已存在，显示错误信息
+            // 用户名已存在，返回错误信息
             echo "用户名已存在，请选择其他用户名。";
         } else {
             // 插入新用户数据
@@ -35,11 +35,10 @@ if (isset($_SESSION["user_id"])) {
             $stmt->bind_param("ss", $username, $hashedPassword);
 
             if ($stmt->execute()) {
-                // 注册成功，重定向到登录页面
-                header("Location: login.html");
-                exit();
+                // 注册成功，返回成功信息
+                echo "注册成功";
             } else {
-                // 注册失败，显示错误信息
+                // 注册失败，返回错误信息
                 echo "注册失败，请稍后重试。";
             }
         }
@@ -48,12 +47,11 @@ if (isset($_SESSION["user_id"])) {
         $stmt->close();
         $conn->close();
     } else {
-        // 如果用户不是管理员账号，显示错误信息
+        // 如果用户不是管理员账号，返回错误信息
         echo "请使用管理员账号访问。";
     }
 } else {
-    // 如果用户未登录，重定向到登录页面
-    header("Location: login.html");
-    exit();
+    // 如果用户未登录，返回错误信息
+    echo "请先登录。";
 }
 ?>
