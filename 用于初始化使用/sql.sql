@@ -19,7 +19,9 @@ CREATE TABLE IF NOT EXISTS notes (
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
     content2 TEXT,
-    content3 TEXT
+    content3 TEXT,
+    user_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 DELIMITER //
