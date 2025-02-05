@@ -6,12 +6,22 @@ USE notepad_db;
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(255) DEFAULT 'user'
 );
 
 -- 插入默认用户
-INSERT INTO users (username, password)
-VALUES ('admin', '$2y$10$PQaM8NtAyPCpY.Oc/dBVlusZl6.lb2fjQec9pRCHOyhOM2cbLArOe'); 
+INSERT INTO users (username, password, role)
+VALUES ('admin', '$2y$10$PQaM8NtAyPCpY.Oc/dBVlusZl6.lb2fjQec9pRCHOyhOM2cbLArOe', 'user'); 
+
+CREATE TABLE config (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    key_name VARCHAR(255) NOT NULL,
+    value TEXT NOT NULL
+);
+
+-- 插入默认管理员角色 'admin'
+INSERT INTO config (key_name, value) VALUES ('allowed_roles', 'admin');
 
 -- 创建记录表
 CREATE TABLE IF NOT EXISTS notes (
@@ -20,8 +30,8 @@ CREATE TABLE IF NOT EXISTS notes (
     content TEXT NOT NULL,
     content2 TEXT,
     content3 TEXT,
-    user_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    user_id INT NOT NULL,  -- 添加 user_id 字段
+    FOREIGN KEY (user_id) REFERENCES users(id)  -- 建立外键关联
 );
 
 DELIMITER //
