@@ -1,16 +1,18 @@
 <?php
 session_start();
 // 引入数据库连接文件
-require_once 'db_connection.php';
+require_once '#db_connection.php';
 
-// 获取设备识别码
+// 获取设备识别码和用户输入的用户名、密码
+$input_username = $_POST['username'] ?? null;
+$input_password = $_POST['password'] ?? null;
 $deviceId = $_POST['deviceId'] ?? null;
 // 获取客户端 IP 地址
 $client_ip = $_SERVER['REMOTE_ADDR'];
 
 // 定义错误次数和时间限制
-$max_attempts = 3;
-$lockout_time = 60; // 1 分钟
+$max_attempts = 2;
+$lockout_time = 120; // 2 分钟
 
 // 检查设备相关的错误记录
 if (isset($_SESSION['login_attempts']['device'][$deviceId])) {
@@ -21,7 +23,7 @@ if (isset($_SESSION['login_attempts']['device'][$deviceId])) {
     // 检查设备是否在锁定时间内且错误次数达到上限
     if ($device_attempts >= $max_attempts && $device_time_since_last_attempt < $lockout_time) {
         $remaining_time = $lockout_time - $device_time_since_last_attempt;
-        echo "由于您多次输入错误，您的设备或 IP 已被锁定，请在 $remaining_time 秒后重试。";
+        echo "由于您输入错误次数超过上限，请在 $remaining_time 秒后重试。";
         exit;
     } elseif ($device_time_since_last_attempt >= $lockout_time) {
         // 设备锁定时间已过，重置错误次数
@@ -44,7 +46,7 @@ if (isset($_SESSION['login_attempts']['ip'][$client_ip])) {
     // 检查 IP 是否在锁定时间内且错误次数达到上限
     if ($ip_attempts >= $max_attempts && $ip_time_since_last_attempt < $lockout_time) {
         $remaining_time = $lockout_time - $ip_time_since_last_attempt;
-        echo "由于您多次输入错误，您的设备或 IP 已被锁定，请在 $remaining_time 秒后重试。";
+        echo "由于您输入错误次数超过上限，请在 $remaining_time 秒后重试。";
         exit;
     } elseif ($ip_time_since_last_attempt >= $lockout_time) {
         // IP 锁定时间已过，重置错误次数
@@ -59,9 +61,6 @@ if (isset($_SESSION['login_attempts']['ip'][$client_ip])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $input_username = $_POST["username"];
-    $input_password = $_POST["password"];
-
     // 使用预处理语句
     $stmt = $conn->prepare("SELECT id, password FROM users WHERE username =?");
     if (!$stmt) {
@@ -90,6 +89,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['login_attempts']['device'][$deviceId]['attempts'] = 0;
             $_SESSION['login_attempts']['ip'][$client_ip]['attempts'] = 0;
             $_SESSION["user_id"] = $row["id"];
+            // 保存用户名到会话
+            $_SESSION["username"] = $input_username;
             echo 'success';
         } else {
             // 密码错误，增加设备和 IP 的错误次数
