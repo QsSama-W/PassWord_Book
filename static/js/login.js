@@ -23,7 +23,7 @@ function validateLogin() {
                 window.location.href = 'notepad.php';
             } else {
                 showPopup(response);
-                if (response.includes('由于您多次输入错误，您的设备或 IP 已被锁定，请在')) {
+                if (response.includes('由于您输入错误超上限，请在')) {
                     const remainingTime = parseInt(response.match(/\d+/)[0]);
                     startCountdown(remainingTime);
                 }
@@ -57,7 +57,7 @@ function startCountdown(remainingTime) {
     const intervalId = setInterval(() => {
         if (remainingTime > 0) {
             remainingTime--;
-            popupMessage.textContent = `由于您多次输入错误，您的设备或 IP 已被锁定，请在 ${remainingTime} 秒后重试。`;
+            popupMessage.textContent = `由于您输入错误超上限，请在 ${remainingTime} 秒后重试。`;
         } else {
             clearInterval(intervalId);
             popupMessage.textContent = '锁定时间已过，您可以再次尝试登录。';
