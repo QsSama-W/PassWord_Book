@@ -25,7 +25,17 @@
         }
         require_once 'db_connection.php';
 
-        $id = $_GET["id"];
+        $id = isset($_GET["id"]) ? intval($_GET["id"]) : 0;
+
+        $user_id = $_SESSION["user_id"];
+        $sql_check = "SELECT id FROM notes WHERE id = $id AND user_id = $user_id";
+        $result_check = $conn->query($sql_check);
+
+        if ($result_check->num_rows == 0) {
+            header("Location: notepad.php");
+            exit();
+        }
+
         $sql = "SELECT id, title, content, content2, content3 FROM notes WHERE id = $id";
         $result = $conn->query($sql);
 
@@ -41,7 +51,6 @@
             echo "<textarea id='content2' name='content2'>" . $row["content2"] . "</textarea>";
             echo "<label for='content3'>密码</label>";
             echo "<textarea id='content3' name='content3'>" . $row["content3"] . "</textarea>";
-            // 将保存修改改为按钮
             echo "<button type='submit' class='save-button'>保存修改</button>";
             echo "</form>";
         }
