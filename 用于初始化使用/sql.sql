@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- 插入默认用户
 INSERT INTO users (username, password, role)
-VALUES ('admin', '$2y$10$PQaM8NtAyPCpY.Oc/dBVlusZl6.lb2fjQec9pRCHOyhOM2cbLArOe', 'user'); 
+VALUES ('admin', '$2y$10$PQaM8NtAyPCpY.Oc/dBVlusZl6.lb2fjQec9pRCHOyhOM2cbLArOe', 'admin'); 
 
 CREATE TABLE config (
     id INT AUTO_INCREMENT PRIMARY KEY,
