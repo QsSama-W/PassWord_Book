@@ -40,15 +40,17 @@
             header("Location: login.html");
             exit();
         }
-
+        
         require_once 'db_connection.php';
-
+        
         $search = isset($_GET['search']) ? $_GET['search'] : '';
         $searchType = isset($_GET['searchType']) ? $_GET['searchType'] : 'title';
         $whereClause = '';
         if ($search) {
             $search = $conn->real_escape_string($search);
-            $whereClause = " WHERE $searchType LIKE '%$search%'";
+            $whereClause = " WHERE user_id = {$_SESSION["user_id"]} AND $searchType LIKE '%$search%'";
+        } else {
+            $whereClause = " WHERE user_id = {$_SESSION["user_id"]}";
         }
 
         // 修改 SQL 查询语句以实现按标题首字符排序
