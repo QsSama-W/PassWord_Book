@@ -1,7 +1,7 @@
 <?php
 session_start();
 // 引入数据库连接文件
-require_once '#db_connection.php';
+require_once 'db_connection.php';
 
 // 获取设备识别码和用户输入的用户名、密码
 $input_username = $_POST['username'] ?? null;
