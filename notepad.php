@@ -12,7 +12,15 @@
 <body>
     <h2>密码本</h2>
     <form action="logout2.php" method="post">
-        <input type="submit" value="登出">
+        <?php
+        session_start();
+        if (isset($_SESSION["username"])) {
+            $username = $_SESSION["username"];
+            echo "<input type='submit' value='{$username} 登出'>";
+        } else {
+            echo "<input type='submit' value='登出'>";
+        }
+        ?>
     </form>
     <button class="new-note-button" onclick="window.location.href='new_note.php'">新建</button>
 
@@ -35,7 +43,6 @@
 
     <div class="notes-wrapper">
         <?php
-        session_start();
         if (!isset($_SESSION["user_id"])) {
             header("Location: login.html");
             exit();
