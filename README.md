@@ -36,16 +36,21 @@ echo $hashedPassword;
 安全建议：初始化完成后，及时删除 `sql.sql` 文件，防止脚本内容泄露带来的风险。
 ```
 -- 插入默认用户
-INSERT INTO users (username, password)
-VALUES ('admin', '$2y$10$PQaM8NtAyPCpY.Oc/dBVlusZl6.lb2fjQec9pRCHOyhOM2cbLArOe'); // 修改那串乱码为你自己密码的哈希值
+INSERT INTO users (username, password, role) // 分别是:用户名，密码，权限
+VALUES ('admin', '$2y$10$PQaM8NtAyPCpY.Oc/dBVlusZl6.lb2fjQec9pRCHOyhOM2cbLArOe','admin');  // 修改那串乱码为你自己密码的哈希值
 ```
 **4、启动应用：**
 将除了用于初始化的上述文件之外的其他所有文件，移动到域名对应的文件夹下，然后在浏览器中访问 `http://www.你的域名.com/login.html`，登录你设置好的用户名和密码，即可使用。
 
 ![1.png](https://github.com/QsSama-W/PassWord_Book/blob/main/1.png)
 
+**5、新增用户页面**
+打开`./register.php`文件，进行注册新用户，默认权限为`user`，第一个用户为`admin`权限
+
+**6、**
+
 > [!WARNING]
->**5、注意事项：**
+>**注意事项：**
 > 
 > **由于本密码本无加密功能，切勿用于存储重要或敏感的密码信息。
 > 在使用过程中，如遇到任何问题或错误，请仔细检查各步骤的配置是否正确，或咨询AI寻求解决方案。**
