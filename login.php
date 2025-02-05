@@ -23,7 +23,7 @@ if (isset($_SESSION['login_attempts']['device'][$deviceId])) {
     // 检查设备是否在锁定时间内且错误次数达到上限
     if ($device_attempts >= $max_attempts && $device_time_since_last_attempt < $lockout_time) {
         $remaining_time = $lockout_time - $device_time_since_last_attempt;
-        echo "由于您输入错误次数超过上限，请在 $remaining_time 秒后重试。";
+        echo "由于您输入错误超上限，请在 $remaining_time 秒后重试。";
         exit;
     } elseif ($device_time_since_last_attempt >= $lockout_time) {
         // 设备锁定时间已过，重置错误次数
@@ -46,7 +46,7 @@ if (isset($_SESSION['login_attempts']['ip'][$client_ip])) {
     // 检查 IP 是否在锁定时间内且错误次数达到上限
     if ($ip_attempts >= $max_attempts && $ip_time_since_last_attempt < $lockout_time) {
         $remaining_time = $lockout_time - $ip_time_since_last_attempt;
-        echo "由于您输入错误次数超过上限，请在 $remaining_time 秒后重试。";
+        echo "由于您输入错误超上限，请在 $remaining_time 秒后重试。";
         exit;
     } elseif ($ip_time_since_last_attempt >= $lockout_time) {
         // IP 锁定时间已过，重置错误次数
