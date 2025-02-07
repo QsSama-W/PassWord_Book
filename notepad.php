@@ -47,15 +47,20 @@
             header("Location: login.html");
             exit();
         }
-        
+
         require_once 'db_connection.php';
-        
+
         $search = isset($_GET['search']) ? $_GET['search'] : '';
         $searchType = isset($_GET['searchType']) ? $_GET['searchType'] : 'title';
         $whereClause = '';
+
         if ($search) {
             $search = $conn->real_escape_string($search);
-            $whereClause = " WHERE user_id = {$_SESSION["user_id"]} AND $searchType LIKE '%$search%'";
+            if ($searchType === 'content3') {
+                $whereClause = " WHERE user_id = {$_SESSION["user_id"]} AND BINARY $searchType LIKE BINARY '%$search%'";
+            } else {
+                $whereClause = " WHERE user_id = {$_SESSION["user_id"]} AND $searchType LIKE '%$search%'";
+            }
         } else {
             $whereClause = " WHERE user_id = {$_SESSION["user_id"]}";
         }
